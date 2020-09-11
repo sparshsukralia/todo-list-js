@@ -2,11 +2,13 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  overflow: hidden;
 }
 
 body {
   /* background: linear-gradient(to bottom, #f12711, #f5af19); */
-  background: linear-gradient(to bottom, #fc4a1a, #f7b733);
+  /* background: linear-gradient(to bottom, #fc4a1a, #f7b733); */
+  background: linear-gradient(to bottom, #000428, #004e92);
   color: white;
   font-family: "Poppins", sans-serif;
   min-height: 100vh;
@@ -14,12 +16,12 @@ body {
 
 header {
   font-size: 1.2rem;
-  margin-bottom: 0;
+  margin: 2rem 0;
 }
 
 header,
 form {
-  min-height: 20vh;
+  /* min-height: 20vh; */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -30,7 +32,7 @@ form {
 } */
 
 form {
-  margin-top: 0;
+  margin-bottom: 3rem;
 }
 
 form input,
@@ -42,16 +44,20 @@ form button {
   outline: none;
 }
 
+form input {
+  width: 30%;
+}
+
 form button {
-  color: #f12711;
+  color: #004e92;
   background: white;
   cursor: pointer;
   transition: all 0.3s ease;
-  border-left: 1px solid #f12711;
+  border-left: 1px solid #004e92;
 }
 
 form button:hover {
-  background: #f12711;
+  background: #004e92;
   color: white;
 }
 
@@ -130,16 +136,20 @@ select {
 }
 
 select {
-  color: #f12711;
+  color: #004e92;
   width: 7rem;
   cursor: pointer;
   padding: 0.5rem;
 }
 
+select h4 {
+  font-size: 1rem;
+}
+
 .select::after {
   content: "\25BC";
   position: absolute;
-  background: #f12711;
+  background: #004e92;
   top: 0;
   right: 0;
   padding: 0.3rem;
@@ -149,5 +159,5 @@ select {
 
 .select:hover::after {
   background: white;
-  color: #f12711;
+  color: #004e92;
 }

@@ -58,13 +58,9 @@ function deleteCheck(e) {
   if (item.classList[0] === "trash-button") {
     // Get the parent item
     const todo = item.parentElement;
-    // Animation class
-    // todo.classList.add("fall");
+    // Remove todo from the local storage
     removeLocalTodos(todo);
-    // Delete the todo after the transition
-    // todo.addEventListener("transitionend", () => {
-    //   todo.remove();
-    // });
+    // Remove todo from the list on the page
     todo.remove();
   }
 
