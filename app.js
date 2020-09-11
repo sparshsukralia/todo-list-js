@@ -97,3 +97,21 @@ function filterTodo(e) {
     }
   });
 }
+
+// Function to save the todo items in the local storage
+function todoLocalStorage(todo) {
+  // Check if there's already a todo in the storage or not
+  let todos;
+  // If there isn't any todo in the local storage
+  // We will make an empty array of todos to save the todos into
+  if (localStorage.getItem("todos") === null) {
+    todos = [];
+  } else {
+    // If there exist some todos in the local storage already
+    // Then we will parse them back into an array
+    todos = JSON.parse(localStorage.getItem("todos"));
+  }
+  // After having an empty array or with some todos in it
+  // We can push the new todo into this array
+  todos.push(todo);
+}
