@@ -61,6 +61,39 @@ function deleteCheck(e) {
 }
 
 function filterTodo(e) {
+  // Getting the child nodes of the div with todoList class
   const todo = todoList.childNodes;
-  console.log(todo);
+  // Now after getting the child nodes
+  // We are looping over the child elements
+  // using the forEach method
+  todo.forEach((todo) => {
+    switch (e.target.value) {
+      // e.target.value contains the value of the select bar
+      // Every case is based on the value of the select bar
+      case "all":
+        // If the value is All
+        // We will show all the to-do items
+        todo.style.display = "flex";
+        break;
+      case "completed":
+        // If the value is completed
+        // We will check if the particular item has the class completed
+        // And render only those items
+        if (todo.classList.contains("completed")) {
+          todo.style.display = "flex";
+        } else {
+          todo.style.display = "none";
+        }
+        break;
+      case "incompleted":
+        // Checking if the element doesn't have the class "completed"
+        // Then we will render the element into the div
+        if (!todo.classList.contains("completed")) {
+          todo.style.display = "flex";
+        } else {
+          todo.style.display = "none";
+        }
+        break;
+    }
+  });
 }
