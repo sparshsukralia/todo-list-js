@@ -5,6 +5,10 @@ const todoList = document.querySelector(".todo-list");
 const filterOption = document.querySelector(".filter-todo");
 
 // Event Listeners
+
+// If everything loads fine or the page refreshes
+// The corresponding function runs
+document.addEventListener("DOMContentLoaded", getTodos);
 todoButton.addEventListener("click", addTodo);
 todoList.addEventListener("click", deleteCheck);
 filterOption.addEventListener("click", filterTodo);
@@ -16,24 +20,33 @@ function addTodo(e) {
   // todo div
   const todoDiv = document.createElement("div");
   todoDiv.classList.add("todo");
+
   // Create Li
   const newTodo = document.createElement("li");
   newTodo.classList.add("todo-item");
+
   // Getting the input to the input
   newTodo.innerText = todoInput.value;
   todoDiv.appendChild(newTodo);
+
+  // Saving todo to local storage
+  todoLocalStorage(todoInput.value);
+
   // Creating CheckMark button
   const completedButton = document.createElement("button");
   completedButton.innerHTML = "<i class='fas fa-check'></i>";
   completedButton.classList.add("complete-button");
   todoDiv.appendChild(completedButton);
+
   // Creating Delete button
   const trashButton = document.createElement("button");
   trashButton.innerHTML = "<i class='fas fa-trash'></i>";
   trashButton.classList.add("trash-button");
   todoDiv.appendChild(trashButton);
+
   // Adding to the todoList
   todoList.appendChild(todoDiv);
+
   // Clear todoInput value
   todoInput.value = "";
 }
@@ -114,4 +127,49 @@ function todoLocalStorage(todo) {
   // After having an empty array or with some todos in it
   // We can push the new todo into this array
   todos.push(todo);
+  // After passing the todo in the array
+  // We will store it back in the local storage
+  localStorage.setItem("todos", JSON.stringify(todos));
+}
+
+function getTodos() {
+  let todos;
+  // If there isn't any todo in the local storage
+  // We will make an empty array of todos to save the todos into
+  if (localStorage.getItem("todos") === null) {
+    todos = [];
+  } else {
+    // If there exist some todos in the local storage already
+    // Then we will parse them back into an array
+    todos = JSON.parse(localStorage.getItem("todos"));
+  }
+  // Looping over the saved todos array
+  todos.forEach((todo) => {
+    // todo div
+    const todoDiv = document.createElement("div");
+    todoDiv.classList.add("todo");
+
+    // Create Li
+    const newTodo = document.createElement("li");
+    newTodo.classList.add("todo-item");
+
+    // Getting the input to the input
+    newTodo.innerText = todo;
+    todoDiv.appendChild(newTodo);
+
+    // Creating CheckMark button
+    const completedButton = document.createElement("button");
+    completedButton.innerHTML = "<i class='fas fa-check'></i>";
+    completedButton.classList.add("complete-button");
+    todoDiv.appendChild(completedButton);
+
+    // Creating Delete button
+    const trashButton = document.createElement("button");
+    trashButton.innerHTML = "<i class='fas fa-trash'></i>";
+    trashButton.classList.add("trash-button");
+    todoDiv.appendChild(trashButton);
+
+    // Adding to the todoList
+    todoList.appendChild(todoDiv);
+  });
 }
