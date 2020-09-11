@@ -59,12 +59,13 @@ function deleteCheck(e) {
     // Get the parent item
     const todo = item.parentElement;
     // Animation class
-    todo.classList.add("fall");
+    // todo.classList.add("fall");
     removeLocalTodos(todo);
     // Delete the todo after the transition
-    todo.addEventListener("transitionend", () => {
-      todo.remove();
-    });
+    // todo.addEventListener("transitionend", () => {
+    //   todo.remove();
+    // });
+    todo.remove();
   }
 
   // Checkmark
